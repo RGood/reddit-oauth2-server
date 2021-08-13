@@ -50,5 +50,5 @@ r = praw.Reddit(
 )
 
 print(r.auth.url(["identity"], "uniqueCode", "temporary"))
-app.run(debug=False, port=1701)
+app.run(debug=False, host="0.0.0.0", port=1701)
 #==================================================END OAUTH APPROVAL-=============================================
