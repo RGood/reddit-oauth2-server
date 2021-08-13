@@ -2,7 +2,7 @@
 #==================================================Config stuff====================================================
 import time, praw
 import webbrowser
-from flask import Flask, request
+from flask import Flask, request, redirect
 from threading import Thread
 from configparser import ConfigParser
 
@@ -29,15 +29,15 @@ def authorized():
 	code = request.args.get('code', '')
 	r.auth.authorize(code)
 	user = r.user.me()
-	text = 'Bot successfully recognized /u/'+user.name
-	
+
 	do_task(user)
 
-	return text
+	return redirect(config["App Info"]["return_to_url"], code=302)
 
 def do_task(user):
 	approval_sub = host.subreddit(config["App Info"]["subreddit"])
 	approval_sub.contributor.add(user.name)
+	print("Approved User: {0}".format(user.name))
 
 host = praw.Reddit(
 	client_id=config["Host Bot"]["id"],
