@@ -16,14 +16,6 @@ app = Flask(__name__)
 config = ConfigParser()
 config.read('example.ini')
 
-#Kill function, to stop server once auth is granted
-def kill():
-	func = request.environ.get('werkzeug.server.shutdown')
-	if func is None:
-		raise RuntimeError('Not running with the Werkzeug Server')
-	func()
-	return "Shutting down..."
-
 #Callback function to receive auth code
 @app.route('/')
 def authorized():
