@@ -2,16 +2,19 @@
 #==================================================Config stuff====================================================
 import time, praw
 import webbrowser
+import logging
 from flask import Flask, request, redirect
 from threading import Thread
 from configparser import ConfigParser
 
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.ERROR)
 #==================================================End Config======================================================
 #==================================================OAUTH APPROVAL==================================================
 app = Flask(__name__)
 
 config = ConfigParser()
-config.read('example.ini')
+config.read('dev.ini')
 
 #Kill function, to stop server once auth is granted
 def kill():

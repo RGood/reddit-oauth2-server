@@ -1,1 +1,4 @@
 dev.ini
+bin/
+lib/
+pyvenv.cfg
