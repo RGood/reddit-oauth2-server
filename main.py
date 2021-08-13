@@ -14,7 +14,7 @@ log.setLevel(logging.ERROR)
 app = Flask(__name__)
 
 config = ConfigParser()
-config.read('dev.ini')
+config.read('example.ini')
 
 #Kill function, to stop server once auth is granted
 def kill():
