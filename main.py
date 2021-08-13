@@ -17,7 +17,7 @@ config = ConfigParser()
 config.read('example.ini')
 
 #Callback function to receive auth code
-@app.route('/')
+@app.route("/{0}".format("/".join(config["App Info"]["callback"].split("/")[3:])))
 def authorized():
 	global access_information
 	state = request.args.get('state', '')
